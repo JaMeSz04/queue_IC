@@ -21,7 +21,7 @@ class AddQueueApplication extends React.Component {
 
    
    addQueueHandler(id,name, queue, nickname, facebook, phonenum){
-       this.setState( { curRegisID : id , curRegisName : name , currentQueue :queue});
+       this.setState( { curRegisID : id , curRegisName : name , currentQueue :queue });
        console.log("action up completed");
        this.writeUserData(id,name,queue, nickname, facebook, phonenum);
        this.refs.noti.handleTouchTap();
