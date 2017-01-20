@@ -1,0 +1,39 @@
+.nameField {
+    margin-left : 38%;
+    margin-right : 16px;
+}
+.nameFieldHeader {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.card-text{
+    text-align: center;
+    font-size : 150%;
+}
+
+.card-head{
+    text-align: center;
+    font-size : 500%;
+}
+
+h1{
+    size: 150%;
+ 
+}
+
+h3{
+    font-size : 70%;
+}
+p{
+    font-size : 120%;
+    
+}
+.listItem {
+    text-align: center;
+    font-size : 200%;
+}

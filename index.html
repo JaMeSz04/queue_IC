@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang = "en">
+
+   <head>
+      <meta charset = "UTF-8">
+      <title>React App</title>
+      <link rel="stylesheet" type="text/css" href="style.css">
+      <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap-theme.min.css">
+   </head>
+
+   <body>
+      <div id = "app"></div>
+      <script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
+        <script>
+            // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyDcgASDbjpO1_YexsT5LqUhKq4Ss9fQXSI",
+                authDomain: "ic-queue.firebaseapp.com",
+                databaseURL: "https://ic-queue.firebaseio.com",
+                storageBucket: "ic-queue.appspot.com",
+                messagingSenderId: "369122743450"
+            };
+            firebase.initializeApp(config);
+        </script>
+      <script src = "index.js"></script>
+      
+   </body>
+
+</html>
