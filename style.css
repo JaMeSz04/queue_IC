@@ -2,6 +2,11 @@
     margin-left : 38%;
     margin-right : 16px;
 }
+.nameField2 {
+    margin-left : 38%;
+    margin-right : 16px;
+    margin-top : -16px;
+}
 .nameFieldHeader {
     text-align: center;
 }
@@ -25,6 +30,7 @@ h1{
     size: 150%;
  
 }
+
 
 h3{
     font-size : 70%;

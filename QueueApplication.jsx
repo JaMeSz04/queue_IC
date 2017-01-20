@@ -191,11 +191,7 @@ export default class QueueApplication extends Component{
                     <Titlebar title = "International College Queuing System"/>
                 </MuiThemeProvider>
                 <Row>
-                    <Col lg = {7}>
-                      <Newsfeed isAdmin = {this.props.isAdmin}/>
-                    </Col>
-                    <Col lg = {5}>
-                        <Row>
+                        <Row style = {{marginLeft : 16}}>
                             <Col md = {6}>
                                 <CardShubU ref = "card" current = {this.state.currentQueue}/>  
                             </Col>
@@ -203,30 +199,45 @@ export default class QueueApplication extends Component{
                                 <CardShubU ref = "card2" current = {this.state.currentQueueETM}/>
                             </Col>
                         </Row>
-                        <Row >
+                        {this.props.isAdmin? 
+                            <Row style = {{marginLeft : 16}}>
                             <Col md = {6} >
-                                <div style = {{marginRight : 16}}>
-                                    <QueueList style = "success" head = "Previous Queue" list = {nNext}/>
+                                <div style = {{marginLeft : 16 ,marginRight : 32}}>
+                                    <QueueList style = "success" head = "SE Queue" list = {nNext}/>
                                 </div>
                             </Col>
                             <Col md = {6}>
-                                <div style = {{marginLeft: -16 ,marginRight : 16}}>
-                                    <QueueList style = "danger" head = "Next Queue" list = {nNextETM}/>
+                                <div style = {{marginLeft : 16,marginRight : 32}}>
+                                    <QueueList style = "danger" head = "ETM Queue" list = {nNextETM}/>
+                                </div>
+                            </Col>
+                        </Row> :
+                            <Row style = {{marginLeft : 16}}>
+                            <Col md = {6} >
+                                <div style = {{marginLeft : 16 ,marginRight : 32}}>
+                                    <QueueList style = "success" head = "SE Called Queue" list = {nPrev}/>
+                                </div>
+                            </Col>
+                            <Col md = {6}>
+                                <div style = {{marginLeft : 16,marginRight : 32}}>
+                                    <QueueList style = "danger" head = "ETM Called Queue" list = {nPrevETM}/>
                                 </div>
                             </Col>
                         </Row>
+                        }
+                        
                         {this.props.isAdmin? 
-                        <Row style = {{marginRight : 32}}>
+                        <Row style = {{marginLeft: 16}}>
                             <div>
                                 <Col md = {6}>
-                                    <Button style = {{marginLeft : 16}} bsStyle="primary"bsSize="large" block disabled = {this.state.isNextQueue} onClick = {this.onNextClickHandler}> {this.state.isNextQueue? "Pending..." : "Next SE" } </Button>
+                                    <Button  bsStyle="primary"bsSize="large" block disabled = {this.state.isNextQueue} onClick = {this.onNextClickHandler}> {this.state.isNextQueue? "Pending..." : "Next SE" } </Button>
                                 </Col>
                                 <Col md = {6}>
-                                    <Button style = {{marginLeft : 16}} bsStyle="primary"bsSize="large" block disabled = {this.state.isNextQueue} onClick = {this.onNextETMClickHandler}> {this.state.isNextQueue? "Pending..." : "Next ETM" } </Button>
+                                    <Button  bsStyle="primary"bsSize="large" block disabled = {this.state.isNextQueue} onClick = {this.onNextETMClickHandler}> {this.state.isNextQueue? "Pending..." : "Next ETM" } </Button>
                                 </Col>
                             </div>
                         </Row> : <div></div> }
-                    </Col>
+                    
                 </Row>
                 <MuiThemeProvider>
                     <Notibar text = { "New Queue ready!!!" } ref = "noti"/>

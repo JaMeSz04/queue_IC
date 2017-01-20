@@ -4,6 +4,9 @@ import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
 import {Image} from 'react-bootstrap';
 
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
+
 
 export default class NameField extends Component {
     constructor(props){
@@ -31,30 +34,30 @@ export default class NameField extends Component {
 
     getInitHandler(snapshot){
        var num = snapshot.numChildren()
-       console.log(num);
+    
        this.setState({queue : num});
        
    }
     
     onTextChange(event,text){
-        console.log(text);
+        
         this.setState( {value : text} );
     }
 
     onTextNameChange(event, text){
-        console.log("name text : " + text);
+        
         this.setState( {valueName : text} );
     }
     onTextNicknameChange(event, text){
-        console.log("name text : " + text);
+ 
         this.setState( {nickname : text} );
     }
     onTextFacebookChange(event, text){
-        console.log("name text : " + text);
+       
         this.setState( {facebook : text} );
     }
     onTextPhoneNumChange(event, text){
-        console.log("name text : " + text);
+       
         this.setState( {phoneNum : text} );
     }
     onSubscribeClick(){
@@ -68,7 +71,7 @@ export default class NameField extends Component {
             isPass = false;
         }
         if (isPass){
-            console.log("Clicked : " + this.state.value.toString());
+         
             this.props.onSubmit(this.state.value, this.state.valueName, this.state.queue, this.state.nickname, this.state.facebook, this.state.phoneNum);
             this.setState ( {error : "" , errorName : "", value : "", valueName : "", nickname : "", facebook : "" , phoneNum : ""});
             
@@ -85,7 +88,7 @@ export default class NameField extends Component {
             textAlign: 'center',
             display: 'inline-block',
         };
-        console.log("rendering");
+        
         return(
             <div>
             <Card style = {{width : "70%", height : "90vh", marginLeft : "15%" , marginTop : "2%"}}>
@@ -111,6 +114,9 @@ export default class NameField extends Component {
                 <TextField className = "nameField" value = {this.state.facebook} onChange = { (event,text) => {this.onTextFacebookChange(event,text)}}
                     hintText="Facebook"
                     />
+                
+                
+                
                 
                 <CardActions>
                     <FlatButton style = {{marginLeft : "44%"}}label="Enter Queue" primary={true} onClick = { () => { this.onSubscribeClick() }} />

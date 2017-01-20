@@ -12,11 +12,18 @@ class AddQueueApplication extends React.Component {
 
         this.state = {
             curRegisID : "",
-            curRegisName : ""
+            curRegisName : "",
+            size : 0,
+            etmSize : 0
         }
         this.writeUserData = this.writeUserData.bind(this);
         this.addQueueHandler = this.addQueueHandler.bind(this);
-        
+        this.setSize = this.setSize.bind(this);
+        this.setEtmSize = this.setEtmSize.bind(this);
+        var currentRef = firebase.database().ref('/seSize/size');
+        currentRef.on("value", this.setSize);
+        var etmRef = firebase.database().ref('/etmSize/size');
+        etmRef.on("value", this.setEtmSize);
    }
 
    
@@ -27,14 +34,41 @@ class AddQueueApplication extends React.Component {
        this.refs.noti.handleTouchTap();
        
    }
+   setSize(snapshot){
+
+       this.setState({size : snapshot.val()});
+   }
+   setEtmSize(snapshot){
+       console.log("set state  ETM " + snapshot.val());
+       console.dir(snapshot.val().toString());
+       this.setState({etmSize : snapshot.val()});
+   }
 
    writeUserData(stuName, stuId, stuQueue, nickname,facebook,phonenum) {
        var nQueue = stuQueue + 1;
-        firebase.database().ref('queueList/' + stuId).set({
+       var id = stuId.toString();
+       if (id.substring(0,3) == "901" || id.substring(0,3) == "811"){
+        console.log(this.state.size + 1);
+        firebase.database().ref('seQueueList/' + stuId).set({
             id: stuId,
             name: stuName,
-            queueNumber : nQueue
+            queueNumber : (this.state.size + 1)
         });
+        
+        firebase.database().ref('seSize/').set({
+            size : (this.state.size + 1)
+        });
+       }else{
+           
+          firebase.database().ref('etmQueueList/' + stuId).set({
+            id: stuId,
+            name: stuName,
+          queueNumber : (this.state.etmSize + 1)
+        });
+        firebase.database().ref('etmSize/').set({
+            size : (this.state.etmSize + 1)
+        });
+       }
 
         firebase.database().ref('studentInfo/' + stuName).set({
             ID: stuId,
